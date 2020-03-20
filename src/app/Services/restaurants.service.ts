@@ -7,7 +7,9 @@ import { Restaurant } from 'src/app/Models/restaurant.model';
 import { MEAT_API } from 'src/environments/environment';
 
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class RestaurantsService {
 
   constructor(private http: HttpClient){
@@ -20,5 +22,9 @@ export class RestaurantsService {
     //     map(response => response.json())
     // );
     return this.http.get<Restaurant[]>(`${MEAT_API}/restaurants`);
+  }
+
+  restaurantById(id: string): Observable<Restaurant> {
+    return this.http.get<Restaurant>(`${MEAT_API}/restaurants/${id}`)
   }
 }
