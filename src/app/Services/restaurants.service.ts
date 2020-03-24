@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { map} from 'rxjs/operators';
 import { Restaurant } from 'src/app/Models/restaurant.model';
 import { MEAT_API } from 'src/environments/environment';
+import { Reviews } from '../Models/review.model';
 
 
 @Injectable({
@@ -17,14 +18,14 @@ export class RestaurantsService {
   }
 
   restaurant(): Observable<Restaurant[]> {
-    // return this.http.get(`${MEAT_API}/restaurants`)
-    //   .pipe(
-    //     map(response => response.json())
-    // );
     return this.http.get<Restaurant[]>(`${MEAT_API}/restaurants`);
   }
 
   restaurantById(id: string): Observable<Restaurant> {
     return this.http.get<Restaurant>(`${MEAT_API}/restaurants/${id}`)
+  }
+
+  reviewsOfRestaurant(id: string): Observable<Reviews> {
+    return this.http.get<Reviews>(`${MEAT_API}/restaurants/${id}/reviews`)
   }
 }
