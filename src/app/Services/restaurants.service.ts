@@ -6,6 +6,7 @@ import { map} from 'rxjs/operators';
 import { Restaurant } from 'src/app/Models/restaurant.model';
 import { MEAT_API } from 'src/environments/environment';
 import { Reviews } from '../Models/review.model';
+import { MenuItem } from '../restaurant-detail/menu-item/menu-item.model';
 
 
 @Injectable({
@@ -27,5 +28,9 @@ export class RestaurantsService {
 
   reviewsOfRestaurant(id: string): Observable<Reviews> {
     return this.http.get<Reviews>(`${MEAT_API}/restaurants/${id}/reviews`)
+  }
+
+  meuOfRestaurant(id: string): Observable<MenuItem> {
+    return this.http.get<MenuItem>(`${MEAT_API}/restaurants/${id}/menu`)
   }
 }
