@@ -14,9 +14,13 @@
         <table class="table">
           <tbody>
           <tr *ngFor="let item of items()">
-            <th >{{ item.name }}</th>
+            <th >({{item.quantity}}x) {{ item.name }}</th>
 
             <td class="text-right">{{ item.value() |  currency: 'BRL': true }}</td>
+            <td class="text-right">
+              <a (click)="removeItem(item)" class="btn btn-sn danger"><i class="fa fa-remove"></i></a>
+            </td>
+
 
           </tr>
           <tr>
@@ -29,8 +33,8 @@
   </div>
   <div class="box-footer" *ngIf="items().length">
     <div class="pull-right">
-      <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i> Limpar</button>
-      <a href="order.html" class="btn btn-success"><i class="fa fa-credit-card"></i> Fechar Pedido</a>
+      <button (click)="clear()" type="button" class="btn btn-danger"><i class="fa fa-trash"></i> Limpar</button>
+      <a  href="order.html" class="btn btn-success"><i class="fa fa-credit-card"></i> Fechar Pedido</a>
     </div>
   </div>
 </div>
