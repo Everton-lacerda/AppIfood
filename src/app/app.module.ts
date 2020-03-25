@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
+import {FormsModule} from '@angular/forms'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +22,7 @@ import { ShoppingCartService } from './restaurant-detail/shopping-cart/shopping-
 
 import {registerLocaleData} from '@angular/common'
 import localePt from '@angular/common/locales/pt';
+import { OrderComponent } from './order/order.component';
 
 registerLocaleData(localePt, 'pt');
 
@@ -36,12 +38,14 @@ registerLocaleData(localePt, 'pt');
     MenuComponent,
     ShoppingCartComponent,
     MenuItemComponent,
-    ReviewsComponent
+    ReviewsComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     RouterModule.forRoot(ROUTES)
   ],
   providers: [RestaurantsService, ShoppingCartService, {provide: LOCALE_ID, useValue: 'pt'}],
